@@ -1,0 +1,47 @@
+package com.nafm.tui;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import org.junit.jupiter.api.Test;
+
+public class BubbleSortTest {
+
+    @Test
+    public void testSort() {
+        int[] input = {5, 1, 4, 2, 8};
+        int[] expected = {1, 2, 4, 5, 8};
+        MergeSort.sort(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testEmptyArray() {
+        int[] input = {};
+        int[] expected = {};
+        MergeSort.sort(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testSortedArray() {
+        int[] input = {1, 2, 3, 4, 5};
+        int[] expected = {1, 2, 3, 4, 5};
+        MergeSort.sort(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testDuplicates() {
+        int[] input = {4, 2, 4, 3, 2};
+        int[] expected = {2, 2, 3, 4, 4};
+        MergeSort.sort(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testSingleElementArray() {
+        int[] input = {1};
+        int[] expected = {1};
+        MergeSort.sort(input);
+        assertArrayEquals(expected, input);
+    }
+}

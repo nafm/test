@@ -1,0 +1,7 @@
+@Test
+public void testSingleElementArray() {
+    int[] array = {1};
+    int[] expected = {1};
+    MergeSort.sort(array);
+    assertArrayEquals(expected, array);
+}
