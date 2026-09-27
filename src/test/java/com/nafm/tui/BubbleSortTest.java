@@ -12,14 +12,14 @@ class MergeSortTest {
     void testMergeSortUnsorted() {
         int[] input = {64, 34, 25, 12, 22, 11, 90, 8};
         int[] expected = {8, 11, 12, 22, 25, 34, 64, 90};
-        assertArrayEquals(expected, Main.mergeSort(input));
+        assertArrayEquals(expected, MergeSort.sort(input));
     }
 
     @Test
     @DisplayName("Doit gerer un tableau deja trie")
     void testMergeSortAlreadySorted() {
         int[] input = {1, 2, 3, 4, 5};
-        assertArrayEquals(input, Main.mergeSort(input));
+        assertArrayEquals(input, MergeSort.sort(input));
     }
 
     @Test
@@ -27,14 +27,14 @@ class MergeSortTest {
     void testMergeSortReversed() {
         int[] input = {5, 4, 3, 2, 1};
         int[] expected = {1, 2, 3, 4, 5};
-        assertArrayEquals(expected, Main.mergeSort(input));
+        assertArrayEquals(expected, MergeSort.sort(input));
     }
 
     @Test
     @DisplayName("Doit gerer les tableaux vides ou a un seul element")
     void testMergeSortEdgeCases() {
-        assertArrayEquals(new int[0], Main.mergeSort(new int[0]));
-        assertArrayEquals(new int[]{42}, Main.mergeSort(new int[]{42}));
+        assertArrayEquals(new int[0], MergeSort.sort(new int[0]));
+        assertArrayEquals(new int[]{42}, MergeSort.sort(new int[]{42}));
     }
 
     @Test
@@ -42,6 +42,6 @@ class MergeSortTest {
     void testMergeSortWithDuplicates() {
         int[] input = {3, 1, 2, 3, 1};
         int[] expected = {1, 1, 2, 3, 3};
-        assertArrayEquals(expected, Main.mergeSort(input));
+        assertArrayEquals(expected, MergeSort.sort(input));
     }
 }
