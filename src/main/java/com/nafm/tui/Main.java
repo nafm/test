@@ -35,51 +35,61 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        TerminalUI ui = new TerminalUI(System.in, System.out);
-        boolean running = true;
+        // Enregistrement du hook de fermeture pour le nettoyage des ressources terminales
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("\nNettoyage des ressources... Au revoir !");
+        }));
 
-        ui.clear();
-        ui.renderHeader("Java 21 TUI Application - nafm/test");
-        ui.printInfo("Demarrage du boilerplate en terminal standard...");
+        try {
+            TerminalUI ui = new TerminalUI(System.in, System.out);
+            boolean running = true;
 
-        while (running) {
-            ui.renderMenu();
-            String choice = ui.promptInput();
+            ui.clear();
+            ui.renderHeader("Java 21 TUI Application - nafm/test");
+            ui.printInfo("Demarrage du boilerplate en terminal standard...");
 
-            switch (choice.toLowerCase()) {
-                case "1" -> {
-                    ui.clear();
-                    ui.renderHeader("Informations Systeme");
-                    ui.printSuccess("Version Java runtime : " + System.getProperty("java.version"));
-                    ui.printInfo("OS : " + System.getProperty("os.name") + " (" + System.getProperty("os.arch") + ")");
-                    ui.printInfo("Memoire libre JVM : " + (Runtime.getRuntime().freeMemory() / (1024 * 1024)) + " Mo");
-                }
-                case "2" -> {
-                    ui.clear();
-                    ui.renderHeader("Tri a bulle (Bubble Sort)");
-                    int[] numbers = {64, 34, 25, 12, 22, 11, 90, 8};
-                    ui.printInfo("Tableau initial : " + Arrays.toString(numbers));
-                    
-                    long start = System.nanoTime();
-                    int[] sorted = bubbleSort(numbers);
-                    long duration = System.nanoTime() - start;
-                    
-                    ui.printSuccess("Tableau trie     : " + Arrays.toString(sorted));
-                    ui.printInfo(String.format("Temps de calcul : %.3f ms", duration / 1_000_000.0));
-                }
-                case "h", "help" -> {
-                    ui.printInfo("Aide : Tapez le numero d une option ou q pour fermer le terminal.");
-                }
-                case "q", "quit", "exit" -> {
-                    ui.printWarning("Arret de l application...");
-                    running = false;
-                }
-                default -> {
-                    ui.printWarning("Option non reconnue : " + choice + ". Tapez h pour l aide.");
+            while (running) {
+                ui.renderMenu();
+                String choice = ui.promptInput();
+
+                if (choice == null) break;
+
+                switch (choice.toLowerCase()) {
+                    case "1" -> {
+                        ui.clear();
+                        ui.renderHeader("Informations Systeme");
+                        ui.printSuccess("Version Java runtime : " + System.getProperty("java.version"));
+                        ui.printInfo("OS : " + System.getProperty("os.name") + " (" + System.getProperty("os.arch") + ")");
+                        ui.printInfo("Memoire libre JVM : " + (Runtime.getRuntime().freeMemory() / (1024 * 1024)) + " Mo");
+                    }
+                    case "2" -> {
+                        ui.clear();
+                        ui.renderHeader("Tri a bulle (Bubble Sort)");
+                        int[] numbers = {64, 34, 25, 12, 22, 11, 90, 8};
+                        ui.printInfo("Tableau initial : " + Arrays.toString(numbers));
+                        
+                        long start = System.nanoTime();
+                        int[] sorted = bubbleSort(numbers);
+                        long duration = System.nanoTime() - start;
+                        
+                        ui.printSuccess("Tableau trie     : " + Arrays.toString(sorted));
+                        ui.printInfo(String.format("Temps de calcul : %.3f ms", duration / 1_000_000.0));
+                    }
+                    case "h", "help" -> {
+                        ui.printInfo("Aide : Tapez le numero d une option ou q pour fermer le terminal.");
+                    }
+                    case "q", "quit", "exit" -> {
+                        ui.printWarning("Arret de l application...");
+                        running = false;
+                    }
+                    default -> {
+                        ui.printWarning("Option non reconnue : " + choice + ". Tapez h pour l aide.");
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Une erreur critique est survenue : " + e.getMessage());
+            System.exit(1);
         }
-
-        System.out.println("\nAu revoir !");
     }
 }
