@@ -2,6 +2,7 @@ package com.nafm.tui;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -47,6 +48,21 @@ public class TerminalUI {
         out.println(COLOR_YELLOW + "  [h]" + RESET + " Aide");
         out.println(COLOR_RED    + "  [q]" + RESET + " Quitter");
         out.println();
+    }
+
+    public void runBubbleSortFlow() {
+        out.print(COLOR_GREEN + "Entrez une liste d'entiers separes par des espaces : " + RESET);
+        out.flush();
+        String input = scanner.nextLine();
+        try {
+            int[] array = Arrays.stream(input.split("\\s+"))
+                                .mapToInt(Integer::parseInt)
+                                .toArray();
+            BubbleSort.sort(array);
+            printSuccess("Resultat trie : " + Arrays.toString(array));
+        } catch (NumberFormatException e) {
+            printWarning("Entree invalide : veuillez saisir uniquement des entiers.");
+        }
     }
 
     public String promptInput() {
