@@ -54,8 +54,12 @@ public class TerminalUI {
         out.print(COLOR_GREEN + "Entrez une liste d'entiers separes par des espaces : " + RESET);
         out.flush();
         String input = scanner.nextLine();
+        if (input == null || input.trim().isEmpty()) {
+            printWarning("Entree vide.");
+            return;
+        }
         try {
-            int[] array = Arrays.stream(input.split("\\s+"))
+            int[] array = Arrays.stream(input.trim().split("\\s+"))
                                 .mapToInt(Integer::parseInt)
                                 .toArray();
             BubbleSort.sort(array);
