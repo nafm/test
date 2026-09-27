@@ -17,14 +17,14 @@ class BubbleSortTest {
 
     @Test
     @DisplayName("Doit gerer un tableau deja trie")
-    void testBubbleSortAlreadySorted() {
+    void testTriTableauDejaTrie() {
         int[] input = {1, 2, 3, 4, 5};
         assertArrayEquals(input, BubbleSort.sort(input));
     }
 
     @Test
     @DisplayName("Doit gerer un tableau inverse")
-    void testBubbleSortReversed() {
+    void testTriTableauInverse() {
         int[] input = {5, 4, 3, 2, 1};
         int[] expected = {1, 2, 3, 4, 5};
         assertArrayEquals(expected, BubbleSort.sort(input));
@@ -32,7 +32,7 @@ class BubbleSortTest {
 
     @Test
     @DisplayName("Doit gerer les tableaux vides ou a un seul element")
-    void testBubbleSortEdgeCases() {
+    void testTriTableauVide() {
         assertArrayEquals(new int[0], BubbleSort.sort(new int[0]));
         assertArrayEquals(new int[]{42}, BubbleSort.sort(new int[]{42}));
     }
