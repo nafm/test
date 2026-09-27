@@ -17,7 +17,7 @@ class BubbleSortTest {
 
     @Test
     @DisplayName("Doit gerer un tableau deja trie")
-    void testBubbleSortAlreadySorted() {
+    void testSortAlreadySorted() {
         int[] input = {1, 2, 3, 4, 5};
         assertArrayEquals(input, BubbleSort.sort(input));
     }
@@ -31,9 +31,14 @@ class BubbleSortTest {
     }
 
     @Test
-    @DisplayName("Doit gerer les tableaux vides ou a un seul element")
-    void testBubbleSortEdgeCases() {
+    @DisplayName("Doit gerer un tableau vide")
+    void testSortEmptyArray() {
         assertArrayEquals(new int[0], BubbleSort.sort(new int[0]));
+    }
+
+    @Test
+    @DisplayName("Doit gerer un tableau a un seul element")
+    void testSortSingleElement() {
         assertArrayEquals(new int[]{42}, BubbleSort.sort(new int[]{42}));
     }
 
@@ -43,5 +48,11 @@ class BubbleSortTest {
         int[] input = {3, 1, 2, 3, 1};
         int[] expected = {1, 1, 2, 3, 3};
         assertArrayEquals(expected, BubbleSort.sort(input));
+    }
+
+    @Test
+    @DisplayName("Doit retourner null si l'entree est null")
+    void testSortNullArray() {
+        assertNull(BubbleSort.sort(null));
     }
 }
