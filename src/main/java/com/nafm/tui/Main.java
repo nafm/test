@@ -75,12 +75,12 @@ public class Main {
                     }
                     case "2" -> {
                         ui.clear();
-                        ui.renderHeader("Tri fusion (Merge Sort)");
+                        ui.renderHeader("Tri a bulles optimise (Bubble Sort)");
                         int[] numbers = {64, 34, 25, 12, 22, 11, 90, 8};
                         ui.printInfo("Tableau initial : " + Arrays.toString(numbers));
                         
                         long start = System.nanoTime();
-                        int[] sorted = mergeSort(numbers);
+                        int[] sorted = BubbleSort.sort(numbers.clone());
                         long duration = System.nanoTime() - start;
                         
                         ui.printSuccess("Tableau trie     : " + Arrays.toString(sorted));
