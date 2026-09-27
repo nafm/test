@@ -43,7 +43,7 @@ public class TerminalUI {
     public void renderMenu() {
         out.println();
         out.println(COLOR_YELLOW + "  [1]" + RESET + " Afficher le statut systeme (Java 21)");
-        out.println(COLOR_YELLOW + "  [2]" + RESET + " Executer une commande de test");
+        out.println(COLOR_YELLOW + "  [2]" + RESET + " Executer un tri a bulle (Bubble Sort)");
         out.println(COLOR_YELLOW + "  [h]" + RESET + " Aide");
         out.println(COLOR_RED    + "  [q]" + RESET + " Quitter");
         out.println();
