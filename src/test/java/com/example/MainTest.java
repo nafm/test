@@ -1,14 +1,27 @@
 package com.example;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class MainTest {
 
     @Test
     public void testMain() {
-        // Simple test to verify Main class exists and can be called
-        Main.main(new String[]{});
-        assertTrue(true);
+        assertDoesNotThrow(() -> Main.main(new String[]{}));
+    }
+
+    @Test
+    public void testF() {
+        assertDoesNotThrow(Main::f);
+    }
+
+    @Test
+    public void testB() {
+        assertDoesNotThrow(Main::b);
+    }
+
+    @Test
+    public void testC() {
+        assertDoesNotThrow(Main::c);
     }
 }
