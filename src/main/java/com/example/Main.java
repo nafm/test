@@ -6,6 +6,7 @@ public class Main {
         System.out.println("Hello, World!");
         f();
         b();
+        c();
     }
 
     public static void f() {
@@ -14,5 +15,9 @@ public class Main {
 
     public static void b() {
         System.out.println("b() called");
+    }
+
+    public static void c() {
+        System.out.println("c() called");
     }
 }
